@@ -5,3 +5,12 @@
     margin: 15px;
     padding: 15px;
 }
+.visited-style
+{
+    color: rgb(86, 86, 140);
+    background: pink;
+}
+.not-visited-style{
+color: white;
+background-color: rgb(101, 51, 51);
+}

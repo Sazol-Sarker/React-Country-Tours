@@ -1,29 +1,33 @@
 import { useState } from 'react';
 import './Country.css'
-const Country = ({country}) => {
+const Country = ({country,visitedCountriesHandler,visitedCountriesFlagHandler}) => {
     // all state hooks here 
     const [isVisited,setIsVisited]=useState(false);
-    console.log(isVisited);
+    // console.log('isVisited '+isVisited);
 
     const checkVisited=()=>{
         setIsVisited(!isVisited);
     }
+    // console.log(visitedCountriesHandler);
 
     const {name,flags,population,area,cca3}=country;
     // console.log(name.common);
-     console.log(country);
+    //  console.log(country);
     return (
-        <div className="country">
+        // css ternary rendering using template string 
+        <div className={`country ${isVisited?'visited-style':'not-visited-style'}`}>
             <h4>Country Name: {name?.common}</h4>
         <img src={flags?.png} alt="Flag of country" />
         <p>Population: {population}</p>
         <p>Area: {area} sq. km</p>
         <p><b><small>Country Code: {cca3}</small></b></p>
-
+       
+       {/* buttons */}
+        <button onClick={()=>visitedCountriesHandler(country)}>Add to visited</button> <br />
+        <button onClick={()=>visitedCountriesFlagHandler(country.flags.png)}>Add Flag</button> <br />
         <button onClick={checkVisited}>{isVisited?'Visited':'Wanna Go'}</button>
         <br />
         {isVisited?'I have visited '+name?.common: 'I want to visit '+name?.common}
-        {/* {isVisited?'I have visited'+{name?.common}: 'I want to visit'+{name?.common}} */}
         
         
         </div>
