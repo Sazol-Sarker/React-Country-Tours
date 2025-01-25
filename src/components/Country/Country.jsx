@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Country.css'
+import CountryDetails from '../CountryDetails/CountryDetails';
 const Country = ({country,visitedCountriesHandler,visitedCountriesFlagHandler}) => {
     // all state hooks here 
     const [isVisited,setIsVisited]=useState(false);
@@ -29,6 +30,10 @@ const Country = ({country,visitedCountriesHandler,visitedCountriesFlagHandler}) 
         <br />
         {isVisited?'I have visited '+name?.common: 'I want to visit '+name?.common}
         
+        {/* Country details */}
+        <hr />
+        <CountryDetails key={country.cca3} 
+        country={country}></CountryDetails>
         
         </div>
     );
